@@ -12,23 +12,28 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 
 <provider>org.hibernate.ejb.HibernatePersistence</provider>
 
-<class>br.com.integrator.Contato</class>
+<class>br.com.estudos.model.Contato</class>
 
 <properties>
-
-<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/springmvc"></property>
-
+<!-- Hibernate 4.x usa o padao de conexao da jpa javax.persistence.... e para versao anterior usa o hibernate....... -->
+<!-- <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/springmvc"></property>
 <property name="javax.persistence.jdbc.user" value="root"></property>
-
 <property name="javax.persistence.jdbc.password" value="tercio102"></property>
+<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"></property>-->
 
-<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"></property>
+<!-- Hibernate 3.x -->
+<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+      <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/springmvc"/>
+      <property name="hibernate.connection.username" value="root"/>
+      <property name="hibernate.connection.password" value="tercio102"/>
+
+<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 
 <property name="hibernate.show_sql" value="true" />
 
 <property name="hibernate.format_sql" value="true" />
 
-<property name="hibernate.hbm2ddl.auto" value="create"/>
+<property name="hibernate.hbm2ddl.auto" value="update"/>
 
 </properties>
 

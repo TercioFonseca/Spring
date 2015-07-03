@@ -20,7 +20,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 
 
 <!-- bean responsavel por referenciar o persistence.xml pelo nome, onde estao as configuracoes de acesso ao banco do jpa/hibernate -->
-<bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 <property name="persistenceUnitName" value="ContatoPU" />
 </bean>
 
@@ -32,11 +32,12 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 <property name="entityManagerFactory" ref="entityManagerFactory"/>
 </bean>
 
-
+<!-- Spring mvc utiliza para enviar as requisicoes das paginas as classes anotadas com o @Controller -->
 <mvc:annotation-driven/>
-
+<!-- Utilizado para que as @Transactional anotadas nas classes DAO funcionem com o bean -->
 <tx:annotation-driven />
 
+<!-- Procura as classes anotadas com @PersistenceContext e faz a injecao da entityFactory assim como outras anotacoes como as @Autowired  -->
 <context:annotation-config />
 
 </beans>
